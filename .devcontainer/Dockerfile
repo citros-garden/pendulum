@@ -14,4 +14,9 @@ FROM althack/ros2:humble-dev
 
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
+RUN apt update && apt-get install -y ros-humble-rosbridge-suite
+RUN apt-get update && apt-get install ffmpeg libsm6 libgl1 libxext6  -y
+
+RUN pip install setuptools==58.2.0
+
 RUN echo "if [ -f ${WORKSPACE}/install/setup.bash ]; then source ${WORKSPACE}/install/setup.bash; fi" >> /home/ros/.bashrc
