@@ -1,10 +1,8 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import Float64MultiArray
 from double_pendulum_interfaces.msg import DoublePendulum, CoordX, CoordY
 
-import numpy as np
 from .system_model import system_model
 
 class double_pendulum(Node):

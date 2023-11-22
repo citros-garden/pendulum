@@ -1,4 +1,4 @@
-system_with_spring:
+double_pendulum:
   ros__parameters:
     publish_freq: 10.0
     l1: 0.08
@@ -9,5 +9,5 @@ system_with_spring:
     a2_0: 10.0
     v1_0: 0.0
     v2_0: 0.0
-    T: 10.0
+    T: 1.0
     h: 0.01

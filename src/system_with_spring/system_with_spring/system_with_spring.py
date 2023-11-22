@@ -1,10 +1,8 @@
 import rclpy
 from rclpy.node import Node
 
-from std_msgs.msg import Float64MultiArray
 from system_with_spring_interfaces.msg import SpringSystem, CoordX, CoordY
 
-import numpy as np
 from .system_model import system_model
 
 class system_with_spring(Node):
