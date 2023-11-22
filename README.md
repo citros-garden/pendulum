@@ -23,7 +23,6 @@ instruction to further develop the simulation.
 Images / Videos from Foxglove
 
 rm -rf install/ log/ build/
-pip install setuptools==58.2.0
 colcon build
 source install/local_setup.bash
 ros2 launch double_pendulum double_pendulum.launch.py
