@@ -17,5 +17,5 @@ system_with_spring:
     x0: 0.1
     k: 100.0
     l0: 0.05
-    T: 1.0
+    T: 10.0
     h: 0.01
