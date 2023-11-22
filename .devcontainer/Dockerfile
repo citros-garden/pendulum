@@ -14,7 +14,7 @@ FROM althack/ros2:humble-dev
 
 # Set up auto-source of workspace for ros user
 ARG WORKSPACE
-RUN apt update && apt-get install -y ros-humble-rosbridge-suite
+RUN apt update && apt-get install -y ros-humble-rosbridge-suite ros-humble-rosbag2-storage-mcap
 RUN apt-get update && apt-get install ffmpeg libsm6 libgl1 libxext6  -y
 
 RUN pip install setuptools==58.2.0 scipy
