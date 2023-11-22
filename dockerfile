@@ -38,7 +38,7 @@ RUN sudo apt-get update && apt-get install -y \
     && rm -rf /var/lib/apt/lists/* 
 RUN  pip install mcap-ros2-support gdown pandas
 
-WORKDIR /workspaces/gal_orbits
+WORKDIR /workspaces/pendulum
 COPY . .
 
 RUN pip install citros numpy
