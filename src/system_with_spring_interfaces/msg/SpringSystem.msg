@@ -1,3 +1,5 @@
 float64 t
-CoordX x
-CoordY y
+PendulumCoord p1
+PendulumCoord p2
+PendulumCoord p3
+SpringCoord spr

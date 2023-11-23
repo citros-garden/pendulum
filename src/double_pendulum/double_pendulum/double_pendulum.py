@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from double_pendulum_interfaces.msg import DoublePendulum, CoordX, CoordY
+from double_pendulum_interfaces.msg import DoublePendulum, PendulumCoord
 
 from .system_model import system_model
 
@@ -41,8 +41,8 @@ class double_pendulum(Node):
         self.data_length = len(self.t)
 
         self.publish_msg = DoublePendulum()
-        self.x_message = CoordX()
-        self.y_message = CoordY()
+        self.p1_msg = PendulumCoord()
+        self.p2_msg = PendulumCoord()
         
         #Defining inputs
         self.declare_parameter('publish_freq', 10.0)   
@@ -54,19 +54,18 @@ class double_pendulum(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         
     def timer_callback(self):
-        self.x_message.x1 = self.x1[self.i]
-        self.x_message.x2 = self.x2[self.i]
-
-        self.y_message.y1 = self.y1[self.i]
-        self.y_message.y2 = self.y2[self.i]
+        self.p1_msg.x = self.x1[self.i]
+        self.p2_msg.x = self.x2[self.i]
+        self.p1_msg.y = self.y1[self.i]
+        self.p2_msg.y = self.y2[self.i]
 
         self.publish_msg.t = self.t[self.i]
-        self.publish_msg.x = self.x_message
-        self.publish_msg.y = self.y_message
+        self.publish_msg.p1 = self.p1_msg
+        self.publish_msg.p2 = self.p2_msg
 
         self.publish.publish(self.publish_msg)
 
-        self.get_logger().info(f"Publishing via self.pos_GT_pub = {self.publish_msg.t}, {self.publish_msg.x}, {self.publish_msg.y}")
+        self.get_logger().info(f"Publishing via self.pos_GT_pub = {self.publish_msg.t}, {self.publish_msg.p1}, {self.publish_msg.p2}")
 
         self.i += 1
         if self.i==self.data_length:

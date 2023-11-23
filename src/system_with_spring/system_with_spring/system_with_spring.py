@@ -1,7 +1,7 @@
 import rclpy
 from rclpy.node import Node
 
-from system_with_spring_interfaces.msg import SpringSystem, CoordX, CoordY
+from system_with_spring_interfaces.msg import SpringSystem, PendulumCoord, SpringCoord
 
 from .system_model import system_model
 
@@ -59,8 +59,10 @@ class system_with_spring(Node):
         self.data_length = len(self.t)
 
         self.publish_msg = SpringSystem()
-        self.x_message = CoordX()
-        self.y_message = CoordY()
+        self.p1_msg = PendulumCoord()
+        self.p2_msg = PendulumCoord()
+        self.p3_msg = PendulumCoord()
+        self.spr_msg = SpringCoord()
         
         #Defining inputs
         self.declare_parameter('publish_freq', 10.0)   
@@ -72,25 +74,27 @@ class system_with_spring(Node):
         self.timer = self.create_timer(timer_period, self.timer_callback)
         
     def timer_callback(self):
-        self.x_message.x1 = self.x1[self.i]
-        self.x_message.x2 = self.x2[self.i]
-        self.x_message.x3 = self.x3[self.i]
-        self.x_message.xk_0 = self.xk_0[self.i]
-        self.x_message.xk_1 = self.xk_1[self.i]
+        self.p1_msg.x = self.x1[self.i]
+        self.p2_msg.x = self.x2[self.i]
+        self.p3_msg.x = self.x3[self.i]
+        self.spr_msg.x0 = self.xk_0[self.i]
+        self.spr_msg.x1 = self.xk_1[self.i]
 
-        self.y_message.y1 = self.y1[self.i]
-        self.y_message.y2 = self.y2[self.i]
-        self.y_message.y3 = self.y3[self.i]
-        self.y_message.yk_0 = self.yk_0[self.i]
-        self.y_message.yk_1 = self.yk_1[self.i]
+        self.p1_msg.y = self.y1[self.i]
+        self.p2_msg.y = self.y2[self.i]
+        self.p3_msg.y = self.y3[self.i]
+        self.spr_msg.y0 = self.yk_0[self.i]
+        self.spr_msg.y1 = self.yk_1[self.i]
 
         self.publish_msg.t = self.t[self.i]
-        self.publish_msg.x = self.x_message
-        self.publish_msg.y = self.y_message
+        self.publish_msg.p1 = self.p1_msg
+        self.publish_msg.p2 = self.p2_msg
+        self.publish_msg.p3 = self.p3_msg
+        self.publish_msg.spr = self.spr_msg
 
         self.publish.publish(self.publish_msg)
 
-        self.get_logger().info(f"Publishing via self.pos_GT_pub = {self.publish_msg.t}, {self.publish_msg.x}, {self.publish_msg.y}")
+        self.get_logger().info(f"Publishing via self.pos_GT_pub = {self.publish_msg.t}, {self.publish_msg.p1}, {self.publish_msg.p2}, {self.publish_msg.p3}, {self.publish_msg.spr}")
 
         self.i += 1
         if self.i==self.data_length:

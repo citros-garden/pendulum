@@ -7,8 +7,8 @@ find_package(ament_cmake REQUIRED)
 
 rosidl_generate_interfaces(${PROJECT_NAME}
   "msg/SpringSystem.msg"
-  "msg/CoordX.msg"
-  "msg/CoordY.msg"
+  "msg/PendulumCoord.msg"
+  "msg/SpringCoord.msg"
  )
 
  ament_export_dependencies(rosidl_default_runtime)
