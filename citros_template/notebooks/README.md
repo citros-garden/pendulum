@@ -6,9 +6,8 @@ Two simulation scenario are belong to the current project: `simulation_double_pe
 
 ## Double Pendulum
 
-For notebook `double_pendulum.ipynb` we created two batches using `simulation_double_pendulum` simulation scenario:
+For notebook `double_pendulum.ipynb` we created a batch using `simulation_double_pendulum` simulation scenario:
 - `double_pendulum_angles` - we varied the initial angles of the first pendulum by selecting values randomly from a normal distribution with a mean of 120 degrees and a standard deviation of 5 degrees;
-- `double_pendulum_vel` - we varied the initial velocity of the second pendulum, choosing values randomly from a normal distribution with a mean of 90 degrees per second and a standard deviation of 5 degrees per second.
 
 The initial parameters for these simulations are presented in [Initial Parameters](#initial-parameters) section, the output format is listed in [Output Format](#output-format) section.
 
@@ -16,6 +15,7 @@ The initial parameters for these simulations are presented in [Initial Parameter
 
 parameter|description
 --|--
+publish_freq| frequency of publishing | 10
 l1 | Length of the first pendulum, m
 l2 | Length of the second pendulum, m
 m1 | Mass of the first pendulum, kg
@@ -56,34 +56,6 @@ h | Step of the simulation, seconds
 ...
 ```
 
-- Batch `double_pendulum_vel`:
-```js
-...
-"double_pendulum": {
-    "double_pendulum": {
-        "ros__parameters": {
-            "publish_freq": 10.0,
-            "l1": 1.2,
-            "l2": 1.0,
-            "m1": 1.0,
-            "m2": 1.0,
-            "a1_0": 120.0,
-            "a2_0": -30.0,
-            "v1_0": 0.0,
-            "v2_0": {
-                "function": "numpy.random.normal",
-                "args": [90, 5]
-            },
-            "T": 5.0,
-            "h": 0.01
-        }
-    }
-}
-...
-```
-
-### Output Format
-
 ### Output Format
 
 ```js
@@ -100,7 +72,7 @@ h | Step of the simulation, seconds
 }
 ```
 
-parameter | description
+Parameter | Description
 --|--
 t | time, s
 p1.x|x coordinate of the first pendulum, m
@@ -114,11 +86,13 @@ For `system_with_spring.ipynb` notebook we created `spring_system_angles` batch 
 
 ### System Parameters
 
-parameter|description
+Parameter|Description
 --|--
+publish_freq| frequency of publishing | 10
 l1 | Length of the first pendulum, m
 l2 | Length of the second pendulum, m
 l3 | Length of the third pendulum, m
+lk | Spring attachment point, m. The spring is attached at a point lk meters from the beginning of the rod of the third pendulum at one end and at a point (lk - l1) meters from the beginning of the rod of the second pendulum at the other end. lk > l1, (l1+l2) > lk and l3 > lk
 m1 | Mass of the first pendulum, kg
 m2 | Mass of the second pendulum, kg
 m3 | Mass of the second pendulum, kg
@@ -128,11 +102,11 @@ a2_0| Initial angle of the third pendulum, counted counterclockwise, degrees
 v1_0| Initial angular velocity of the first pendulum, counted counterclockwise, degrees per second
 v2_0| Initial angular velocity of the second pendulum, counted counterclockwise, degrees per second
 v3_0| Initial angular velocity of the third pendulum, counted counterclockwise, degrees per second
-T | Time of the simulation, seconds
-h | Step of the simulation, seconds
 x0 | Horizontal distance between attachment points of the first and third pendulums, m 
 k | Spring constant, kg/s^2
 l0 | Unstretched spring length, m
+T | Time of the simulation, seconds
+h | Step of the simulation, seconds
 
 ### Initial Parameters
 
@@ -196,7 +170,7 @@ l0 | Unstretched spring length, m
 }
 ```
 
-parameter | description
+Parameter | Description
 --|--
 t | time, s
 p1.x|x coordinate of the first pendulum, m
