@@ -4,11 +4,10 @@ sidebar_label: 'Pendulum'
 ---
 
 # Pendulum
-
 ## Overview
 
 Pendulum systems, encompassing setups from simple single pendulums to complex multi-pendulum arrangements, are governed by the principles of classical mechanics.
-The double pendulum, a classic example of a chaotic system, exhibits intricate and unpredictable behavior that is highly sensitive to its initial conditions. This system consists of two pendulums attached end to end, where the motion of the second pendulum depends on the first. One of the most fascinating aspects of a double pendulum is its sensitivity to initial parameters, including the starting angles and velocities of the pendulums. Small changes in these initial parameters can lead to vastly different trajectories. That means, if one double pendulum starts at a slightly different angle than an identical pendulum, their motions will diverge significantly over time. The dependence on initial conditions is not just limited to angles but also includes the initial angular velocities. Even if two double pendulums start at the same angle but with slightly different angular velocities, their paths will diverge dramatically. This unpredictability is due to the nonlinear dynamics governing the motion of the pendulums, where the equations of motion do not yield simple, predictable solutions.
+The double pendulum, a classic example of a chaotic system, exhibits intricate and unpredictable behavior that is highly sensitive to its initial conditions. This system consists of two pendulums attached end to end, where the motion of the second pendulum depends on the first. One of the most fascinating aspects of a double pendulum is its sensitivity to initial parameters, including the starting angles and velocities of the pendulums. Small changes in these initial parameters can lead to vastly different trajectories. That means, if one double pendulum starts at a slightly different angle than an identical pendulum, their motions will diverge significantly over time.
 
 Setting a range of simulations with various initial parameters and exploring the behavior of the systems is convenient with CITROS: 
 
@@ -22,7 +21,7 @@ In the current project we suggest to explore two systems: double pendulum and sy
 
 ## Prerequisites
 
-If you are working inside the docker development container, everything is already installed. Otherwise, please check the dependencies in Dockerfile in [.devcontainer](https://github.com/citros-garden/gal_orbits/tree/main/.devcontainer) folder.
+If you are working inside the docker development container, everything is already installed. Otherwise, please check the dependencies in Dockerfile in [.devcontainer](https://github.com/citros-garden/pendulum/tree/main/.devcontainer) folder.
 
 ## Table of Contents
 <!-- no toc -->
@@ -39,58 +38,65 @@ If you are working inside the docker development container, everything is alread
 6. [Results](#results)
 
 ## Installation
+
+Clone the repository:
+
 ```bash
 git clone git@github.com:citros-garden/pendulum.git
 ```
 
+If you are working with devcontainer, make sure you installed [Visual Studio code](https://code.visualstudio.com/download) and then open the repository in the [VScode Dev Container](https://citros.io/doc/docs_tutorials/getting_started/#open-project-in-vscode-dev-container).
+
 ## Workspace Overview
 ### Input Parameters
 
-- Double pendulum
+#### Double Pendulum
+
 ![double_pendulum_schema](img/double_pendulum_schema.png)
 
 Parameters of the simulation with their default values are listed in `src/double_pendulum/config/params.yaml` file:
 
-Parameter | Description | Default
+Parameter | Default | Description
 |--|--|--
-publish_freq| frequency of publishing | 10
-l1 | Length of the first pendulum, m | 0.08
-l2 | Length of the second pendulum, m | 0.2
-m1 | Mass of the first pendulum, kg | 5.0
-m2 | Mass of the second pendulum, kg | 3.0
-a1_0| Initial angle of the first pendulum, counted counterclockwise, degrees | 30.0
-a2_0| Initial angle of the second pendulum, counted counterclockwise, degrees | 10.0
-v1_0| Initial angular velocity of the first pendulum, counted counterclockwise, degrees per second | 0.0
-v2_0| Initial angular velocity of the second pendulum, counted counterclockwise, degrees per second | 0.0 
-T | Time of the simulation, seconds | 10.0
-h | Step of the simulation, seconds | 0.01
+publish_freq | 10| frequency of publishing
+l1 | 0.08 | Length of the first pendulum, m
+l2 | 0.2 | Length of the second pendulum, m
+m1 | 5.0 | Mass of the first pendulum, kg
+m2 | 3.0 | Mass of the second pendulum, kg
+a1_0 | 30.0| Initial angle of the first pendulum, counted counterclockwise, degrees
+a2_0 | 10.0| Initial angle of the second pendulum, counted counterclockwise, degrees
+v1_0 | 0.0| Initial angular velocity of the first pendulum, counted counterclockwise, degrees per second
+v2_0 | 0.0| Initial angular velocity of the second pendulum, counted counterclockwise, degrees per second 
+T | 10.0 | Time of the simulation, seconds
+h | 0.01 | Step of the simulation, seconds
 
-- System with spring
+#### System with Spring
+
 ![system_with_spring_schema](img/system_with_spring_schema.png)
 
 Parameters of the simulation with their default values are listed in `src/system_with_spring/config/params.yaml` file:
 
-Parameter | Description | Default
+Parameter| Default | Description 
 |--|--|--
-publish_freq| frequency of publishing | 10
-l1 | Length of the first pendulum, m | 0.08
-l2 | Length of the second pendulum, m | 0.2
-l3 | Length of the third pendulum, m | 0.32
-lk | Spring attachment point, m. The spring is attached at a point lk meters from the beginning of the rod of the third pendulum at one end and at a point (lk - l1) meters from the beginning of the rod of the second pendulum at the other end. lk > l1, (l1+l2) > lk and l3 > lk | 0.14
-m1 | Mass of the first pendulum, kg | 5.0
-m2 | Mass of the second pendulum, kg | 3.0
-m3 | Mass of the second pendulum, kg | 1.0
-a1_0| Initial angle of the first pendulum, counted counterclockwise, degrees | 30.0
-a2_0| Initial angle of the second pendulum, counted counterclockwise, degrees | 10.0
-a2_0| Initial angle of the third pendulum, counted counterclockwise, degrees | -30.0
-v1_0| Initial angular velocity of the first pendulum, counted counterclockwise, degrees per second | 0.0
-v2_0| Initial angular velocity of the second pendulum, counted counterclockwise, degrees per second | 0.0
-v3_0| Initial angular velocity of the third pendulum, counted counterclockwise, degrees per second | 0.0
-x0 | Horizontal distance between attachment points of the first and third pendulums, m | 0.1
-k | Spring constant, kg/s^2 | 100.0
-l0 | Unstretched spring length, m | 0.05
-T | Time of the simulation, seconds | 10.0
-h | Step of the simulation, seconds | 0.01
+publish_freq | 10| frequency of publishing
+l1 | 0.08 | Length of the first pendulum, m
+l2 | 0.2 | Length of the second pendulum, m
+l3| 0.32 | Length of the third pendulum, m 
+lk | 0.14 | Spring attachment point, m. The spring is attached at a point lk meters from the beginning of the rod of the third pendulum at one end and at a point (lk - l1) meters from the beginning of the rod of the second pendulum at the other end. lk > l1, (l1+l2) > lk and l3 > lk
+m1 | 5.0 | Mass of the first pendulum, kg
+m2 | 3.0 | Mass of the second pendulum, kg
+m3 | 1.0 | Mass of the second pendulum, kg
+a1_0 | 30.0| Initial angle of the first pendulum, counted counterclockwise, degrees
+a2_0 | 10.0| Initial angle of the second pendulum, counted counterclockwise, degrees
+a2_0 | -30.0| Initial angle of the third pendulum, counted counterclockwise, degrees
+v1_0 | 0.0| Initial angular velocity of the first pendulum, counted counterclockwise, degrees per second
+v2_0 | 0.0| Initial angular velocity of the second pendulum, counted counterclockwise, degrees per second
+v3_0 | 0.0| Initial angular velocity of the third pendulum, counted counterclockwise, degrees per second
+x0 | 0.1 | Horizontal distance between attachment points of the first and third pendulums, m
+k | 100.0 | Spring constant, kg/s^2
+l0 | 0.05 | Unstretched spring length, m
+T | 10.0 | Time of the simulation, seconds
+h | 0.01 | Step of the simulation, seconds
 
 ### Source Code and Launch File
 
@@ -108,8 +114,8 @@ The launch files are located in `src/double_pendulum/launch/double_pendulum.laun
 
 ### Output of the Simulation
 
-- Double Pendulum
-The simulated data is published to a topic `'/coordinates'`. Each message has the custom message type that is defined in `src/double_pendulum_interfaces`:
+#### Double Pendulum
+The simulated data is published to a topic `'/coordinates'`. Each message has the custom message type that is defined in `src/double_pendulum_interfaces/`:
 
 ```js
 {
@@ -134,9 +140,9 @@ p1.y|y coordinate of the first pendulum, m
 p2.x|x coordinate of the second pendulum, m
 p2.y|y coordinate of the second pendulum, m
 
-- System with Spring
+#### System with Spring
 
-The simulated data is published to a topic named '/coordinates' too. Each message has the custom message type that is defined in `src/system_with_spring_interfaces/`:
+The simulated data is published to a topic named `'/coordinates'` too. Each message has the custom message type that is defined in `src/system_with_spring_interfaces/`:
 
 ```js
 {
@@ -180,11 +186,13 @@ spr.y1|x coordinate of the spring attachment to the second pendulum, m
 
 ## CITROS Initialization
 
-To start working with CITROS you need to install CITROS CLI package, log in, set ssh key and initialize the `.citros` repository. To do this please follow [Getting Started tutorial](https://citros.io/doc/docs_tutorials/getting_started/).
+To start working with CITROS you need to install CITROS CLI package, log in, set ssh key and initialize the `.citros` repository. To do this please follow:
+1. [Install CITROS](https://citros.io/doc/docs_tutorials/getting_started/#installation)
+2. [Initialize CITROS](https://citros.io/doc/docs_tutorials/getting_started/#initialization)
 
-# Scenario
+## Scenario
 
-We can explore how the trajectories of the pendulums change with different initial parameters.
+Let's investigate whether minor changes in initial parameters have a significant impact on the motion of the pendulum.
 
 ### Parameter Setup
 
@@ -254,7 +262,7 @@ Check the `.citros/simulations/simulation_double_pendulum.json` and `.citros/sim
 
 ## Running the Scenario Using CITROS
 
-Next step is to commit and push all your changes and also build and push a docker image. To do this please follow the [Getting Started tutorial](https://citros.io/doc/docs_tutorials/getting_started/).
+Next step is to [Upload project to CITROS Server](https://citros.io/doc/docs_tutorials/getting_started/#upload-to-citros-server).
 
 After the following steps everything is ready to run the simulations in the cloud. Let's run two scenarios - one for the system of the double pendulum and one for the system with spring, the names of the resulting batches are set by `-n` key. Let's set 7 simulation runs for each of them by `-c` key. `-r` defines that the runs will be processed remotely. After typing the following command you will be asked to select the corresponding simulation scenario:
 
@@ -303,7 +311,7 @@ sid	|a1_0
 
 As we can see, the trajectories differ significantly and unpredictably although the initial parameters have quite close values.
 
-Refer to the notebook [notebooks/double_pendulum.ipynb](https://citros.io/pendulum/blob/main/notebooks/double_pendulum.ipynb) for more detailed information about batches and additional ideas on visualization, such as plotting the animation of the pendulum's motion.
-Additionally, examine [notebooks/system_with_spring.ipynb](https://citros.io/pendulum/blob/main/notebooks/system_with_spring.ipynb) for a detailed view of behavior of the spring system.
+Refer to the notebook [notebooks/double_pendulum.ipynb](https://citros.io/pendulum/blob/main/notebooks/double_pendulum.ipynb) for more detailed information about batches and additional ideas on visualization, such as plotting the animation of the pendulum's motion.<br/>
+Additionally, examine [notebooks/system_with_spring.ipynb](https://citros.io/pendulum/blob/main/notebooks/system_with_spring.ipynb) for a detailed view of the spring system behavior.
 
-Feel free to set up your own simulations by varying different parameters, create your own notebooks and explore pendulum systems with CITROS!
+Feel free to set up your own simulations varying different parameters, create your own notebooks and explore pendulum systems with CITROS!
