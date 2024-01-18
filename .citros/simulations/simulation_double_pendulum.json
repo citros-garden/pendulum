@@ -1,0 +1,14 @@
+{
+    "CPU": 2,
+    "GPU": 0,
+    "MEM": 265,
+    "description": "Default simulation. Change the values according to your needs.",
+    "id": "0128ae93-fb3b-4d19-a05e-cdd92a252f3e",
+    "launch": {
+        "file": "double_pendulum.launch.py",
+        "package": "double_pendulum"
+    },
+    "parameter_setup": "default_param_setup.json",
+    "storage_type": "MCAP",
+    "timeout": 180
+}

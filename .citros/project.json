@@ -1,0 +1,275 @@
+{
+    "citros_cli_version": "0.2.16",
+    "cover": "",
+    "description": "",
+    "git": "https://github.com/citros-garden/pendulum.git",
+    "is_active": true,
+    "launches": [],
+    "packages": [
+        {
+            "cover": "",
+            "description": "TODO: Package description",
+            "git": "",
+            "launches": [
+                {
+                    "description": "",
+                    "name": "double_pendulum.launch.py",
+                    "path": "src/double_pendulum/launch/double_pendulum.launch.py"
+                }
+            ],
+            "maintainer": "ros",
+            "maintainer_email": "lidia@lulav.space",
+            "name": "double_pendulum",
+            "nodes": [
+                {
+                    "entry_point": "double_pendulum.double_pendulum:main",
+                    "name": "double_pendulum",
+                    "parameters": [
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "publish_freq",
+                            "parameterType": "float",
+                            "value": 10.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "l1",
+                            "parameterType": "float",
+                            "value": 0.08
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "l2",
+                            "parameterType": "float",
+                            "value": 0.2
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "m1",
+                            "parameterType": "float",
+                            "value": 5.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "m2",
+                            "parameterType": "float",
+                            "value": 3.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "a1_0",
+                            "parameterType": "float",
+                            "value": 30.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "a2_0",
+                            "parameterType": "float",
+                            "value": 10.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "v1_0",
+                            "parameterType": "float",
+                            "value": 0.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "v2_0",
+                            "parameterType": "float",
+                            "value": 0.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "T",
+                            "parameterType": "float",
+                            "value": 10.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "h",
+                            "parameterType": "float",
+                            "value": 0.01
+                        }
+                    ],
+                    "path": "src/double_pendulum/double_pendulum/double_pendulum.py"
+                }
+            ],
+            "package_xml": "src/double_pendulum/package.xml",
+            "parameters": {},
+            "path": "src/double_pendulum",
+            "setup_py": "src/double_pendulum/setup.py"
+        },
+        {
+            "cover": "",
+            "description": "TODO: Package description",
+            "git": "",
+            "launches": [],
+            "maintainer": "ros",
+            "maintainer_email": "lidia@lulav.space",
+            "name": "double_pendulum_interfaces",
+            "nodes": [],
+            "package_xml": "src/double_pendulum_interfaces/package.xml",
+            "parameters": {},
+            "path": "src/double_pendulum_interfaces",
+            "setup_py": ""
+        },
+        {
+            "cover": "",
+            "description": "TODO: Package description",
+            "git": "",
+            "launches": [
+                {
+                    "description": "",
+                    "name": "system_with_spring.launch.py",
+                    "path": "src/system_with_spring/launch/system_with_spring.launch.py"
+                }
+            ],
+            "maintainer": "ros",
+            "maintainer_email": "lidia@lulav.space",
+            "name": "system_with_spring",
+            "nodes": [
+                {
+                    "entry_point": "system_with_spring.system_with_spring:main",
+                    "name": "system_with_spring",
+                    "parameters": [
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "publish_freq",
+                            "parameterType": "float",
+                            "value": 10.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "l1",
+                            "parameterType": "float",
+                            "value": 0.08
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "l2",
+                            "parameterType": "float",
+                            "value": 0.2
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "l3",
+                            "parameterType": "float",
+                            "value": 0.32
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "lk",
+                            "parameterType": "float",
+                            "value": 0.14
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "m1",
+                            "parameterType": "float",
+                            "value": 5.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "m2",
+                            "parameterType": "float",
+                            "value": 3.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "m3",
+                            "parameterType": "float",
+                            "value": 1.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "a1_0",
+                            "parameterType": "float",
+                            "value": 30.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "a2_0",
+                            "parameterType": "float",
+                            "value": 10.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "a3_0",
+                            "parameterType": "float",
+                            "value": -30.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "v1_0",
+                            "parameterType": "float",
+                            "value": 0.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "v2_0",
+                            "parameterType": "float",
+                            "value": 0.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "v3_0",
+                            "parameterType": "float",
+                            "value": 0.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "x0",
+                            "parameterType": "float",
+                            "value": 0.1
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "k",
+                            "parameterType": "float",
+                            "value": 100.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "l0",
+                            "parameterType": "float",
+                            "value": 0.05
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "T",
+                            "parameterType": "float",
+                            "value": 10.0
+                        },
+                        {
+                            "description": "Parameter loaded from config.yaml",
+                            "name": "h",
+                            "parameterType": "float",
+                            "value": 0.01
+                        }
+                    ],
+                    "path": "src/system_with_spring/system_with_spring/system_with_spring.py"
+                }
+            ],
+            "package_xml": "src/system_with_spring/package.xml",
+            "parameters": {},
+            "path": "src/system_with_spring",
+            "setup_py": "src/system_with_spring/setup.py"
+        },
+        {
+            "cover": "",
+            "description": "TODO: Package description",
+            "git": "",
+            "launches": [],
+            "maintainer": "ros",
+            "maintainer_email": "lidia@lulav.space",
+            "name": "system_with_spring_interfaces",
+            "nodes": [],
+            "package_xml": "src/system_with_spring_interfaces/package.xml",
+            "parameters": {},
+            "path": "src/system_with_spring_interfaces",
+            "setup_py": ""
+        }
+    ],
+    "tags": []
+}
