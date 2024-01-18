@@ -1,0 +1,14 @@
+{
+    "CPU": 2,
+    "GPU": 0,
+    "MEM": 265,
+    "description": "Default simulation. Change the values according to your needs.",
+    "id": "fa0b5a29-f035-43a0-af2c-8add4488e939",
+    "launch": {
+        "file": "system_with_spring.launch.py",
+        "package": "system_with_spring"
+    },
+    "parameter_setup": "default_param_setup.json",
+    "storage_type": "MCAP",
+    "timeout": 180
+}
